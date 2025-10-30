@@ -34,14 +34,13 @@ Hooks are scripts that run at specific points in Claude's workflow:
 ```bash
 # Copy both files
 cp skill-activation-prompt.sh your-project/.claude/hooks/
-cp skill-activation-prompt.ts your-project/.claude/hooks/
+cp skill-activation-prompt.py your-project/.claude/hooks/
 
 # Make executable
 chmod +x your-project/.claude/hooks/skill-activation-prompt.sh
+chmod +x your-project/.claude/hooks/skill-activation-prompt.py
 
-# Install dependencies
-cd your-project/.claude/hooks
-npm install
+# Requires Python 3.6+ (no additional dependencies needed)
 ```
 
 **Add to settings.json:**
@@ -80,11 +79,15 @@ npm install
 
 **Integration:**
 ```bash
-# Copy file
+# Copy both files
 cp post-tool-use-tracker.sh your-project/.claude/hooks/
+cp post-tool-use-tracker.py your-project/.claude/hooks/
 
 # Make executable
 chmod +x your-project/.claude/hooks/post-tool-use-tracker.sh
+chmod +x your-project/.claude/hooks/post-tool-use-tracker.py
+
+# Requires Python 3.6+ (no additional dependencies needed)
 ```
 
 **Add to settings.json:**
