@@ -338,7 +338,7 @@ When helping users integrate:
 - 📝 Contribute examples from your domain
 
 **Background:**
-This infrastructure was detailed in the viral Reddit post ["Claude Code is a Beast - Part 2"](https://www.reddit.com/r/ClaudeAI/comments/1gc4xme/claude_code_is_a_beast_part_2_the_secret_to/). After hundreds of requests, this showcase was created to help the community implement these patterns.
+
 
 ---
 
