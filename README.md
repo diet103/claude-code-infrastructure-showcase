@@ -338,6 +338,7 @@ When helping users integrate:
 - 📝 Contribute examples from your domain
 
 **Background:**
+This infrastructure was detailed in a post I made to Reddit ["Claude Code is a Beast – Tips from 6 Months of Hardcore Use"](https://www.reddit.com/r/ClaudeAI/comments/1oivjvm/claude_code_is_a_beast_tips_from_6_months_of/). After hundreds of requests, this showcase was created to help the community implement these patterns.
 
 
 ---
