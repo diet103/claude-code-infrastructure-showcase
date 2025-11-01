@@ -218,6 +218,343 @@
                     "captureMessage"
                 ]
             }
+        },
+        "platform-engineering": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Platform engineering and architecture for IaC, Kubernetes, GitOps, service mesh, and developer platforms",
+            "promptTriggers": {
+                "keywords": [
+                    "infrastructure as code",
+                    "IaC",
+                    "terraform",
+                    "pulumi",
+                    "cloudformation",
+                    "kubernetes",
+                    "k8s",
+                    "container orchestration",
+                    "helm",
+                    "kustomize",
+                    "gitops",
+                    "argocd",
+                    "flux",
+                    "service mesh",
+                    "istio",
+                    "linkerd",
+                    "backstage",
+                    "developer platform",
+                    "platform architecture",
+                    "multi-tenancy",
+                    "resource quota",
+                    "autoscaling",
+                    "HPA",
+                    "VPA",
+                    "cost optimization",
+                    "finops"
+                ],
+                "intentPatterns": [
+                    "(create|setup|implement|configure).*?(infrastructure|platform|kubernetes|terraform)",
+                    "(deploy|orchestrate).*?(container|kubernetes|k8s)",
+                    "(design|architect|build).*?(platform|infrastructure)",
+                    "(gitops|argocd|flux).*?(deploy|sync|automation)",
+                    "(service mesh|istio|linkerd).*?(traffic|security|routing)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.tf",
+                    "**/*.tfvars",
+                    "**/terraform/**/*",
+                    "**/k8s/**/*.yaml",
+                    "**/kubernetes/**/*.yaml",
+                    "**/helm/**/*",
+                    "**/kustomize/**/*",
+                    "**/manifests/**/*.yaml",
+                    "**/argocd/**/*",
+                    "**/flux/**/*"
+                ],
+                "contentPatterns": [
+                    "apiVersion:.*k8s\\.io",
+                    "kind: (Deployment|Service|Ingress|StatefulSet|DaemonSet)",
+                    "terraform \\{",
+                    "resource \"aws_",
+                    "resource \"azurerm_",
+                    "resource \"google_"
+                ]
+            }
+        },
+        "devsecops": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "DevSecOps practices including security scanning, container security, secrets management, and policy enforcement",
+            "promptTriggers": {
+                "keywords": [
+                    "security",
+                    "security scan",
+                    "vulnerability",
+                    "SAST",
+                    "DAST",
+                    "SCA",
+                    "trivy",
+                    "snyk",
+                    "semgrep",
+                    "security scanning",
+                    "container security",
+                    "image scanning",
+                    "secrets management",
+                    "vault",
+                    "sealed secrets",
+                    "external secrets",
+                    "security policy",
+                    "OPA",
+                    "gatekeeper",
+                    "kyverno",
+                    "compliance",
+                    "policy enforcement",
+                    "pod security"
+                ],
+                "intentPatterns": [
+                    "(scan|check|find|detect).*?(vulnerability|security|secret|credential)",
+                    "(implement|add|setup|configure).*?(security|scanning|secrets|vault)",
+                    "(policy|compliance|enforce).*?(security|standard|baseline)",
+                    "(harden|secure).*?(container|image|pod|cluster)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/.trivyignore",
+                    "**/security/**/*.yaml",
+                    "**/policies/**/*.rego",
+                    "**/policies/**/*.yaml",
+                    "**/vault/**/*",
+                    "**/*-policy.yaml",
+                    "**/gatekeeper/**/*",
+                    "**/kyverno/**/*"
+                ],
+                "contentPatterns": [
+                    "kind: (ConstraintTemplate|ClusterPolicy|Policy)",
+                    "apiVersion:.*gatekeeper",
+                    "apiVersion:.*kyverno",
+                    "trivy",
+                    "snyk",
+                    "securityContext:",
+                    "podSecurityPolicy"
+                ]
+            }
+        },
+        "sre": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Site Reliability Engineering practices including SLO/SLI, error budgets, incident management, and observability",
+            "promptTriggers": {
+                "keywords": [
+                    "SLO",
+                    "SLI",
+                    "SLA",
+                    "service level",
+                    "error budget",
+                    "incident",
+                    "outage",
+                    "postmortem",
+                    "post-mortem",
+                    "on-call",
+                    "runbook",
+                    "observability",
+                    "monitoring",
+                    "alerting",
+                    "prometheus",
+                    "grafana",
+                    "chaos engineering",
+                    "fault injection",
+                    "reliability",
+                    "availability",
+                    "capacity planning",
+                    "performance"
+                ],
+                "intentPatterns": [
+                    "(define|create|implement|measure).*?(SLO|SLI|SLA|error budget)",
+                    "(incident|outage|down|degraded).*?(response|debug|investigate)",
+                    "(monitor|alert|observe|track).*?(service|system|metric)",
+                    "(chaos|fault).*?(engineering|injection|test)",
+                    "(runbook|playbook|procedure).*?(incident|debug)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/monitoring/**/*.yaml",
+                    "**/alerts/**/*.yaml",
+                    "**/prometheus/**/*",
+                    "**/grafana/**/*",
+                    "**/runbooks/**/*.md",
+                    "**/slo/**/*.yaml",
+                    "**/chaos/**/*"
+                ],
+                "contentPatterns": [
+                    "kind: (PrometheusRule|ServiceMonitor|Alert)",
+                    "expr:",
+                    "for: [0-9]+(s|m|h)",
+                    "severity: (critical|warning|info)"
+                ]
+            }
+        },
+        "release-engineering": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Release engineering including CI/CD, deployment strategies, versioning, artifact management, and progressive delivery",
+            "promptTriggers": {
+                "keywords": [
+                    "CI/CD",
+                    "pipeline",
+                    "deployment",
+                    "release",
+                    "deploy",
+                    "artifact",
+                    "build",
+                    "canary",
+                    "blue-green",
+                    "rolling update",
+                    "rollback",
+                    "versioning",
+                    "semantic version",
+                    "feature flag",
+                    "progressive delivery",
+                    "GitHub Actions",
+                    "GitLab CI",
+                    "Jenkins",
+                    "Flagger",
+                    "ArgoCD"
+                ],
+                "intentPatterns": [
+                    "(create|setup|configure|implement).*?(pipeline|CI/CD|deployment)",
+                    "(deploy|release).*?(application|service|code)",
+                    "(rollback|revert).*?(deployment|release)",
+                    "(canary|blue-green|rolling).*?(deploy|deployment|release)",
+                    "(automate|automation).*?(release|deployment)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/.github/workflows/**/*.yml",
+                    "**/.github/workflows/**/*.yaml",
+                    "**/.gitlab-ci.yml",
+                    "**/Jenkinsfile",
+                    "**/azure-pipelines.yml",
+                    "**/cloudbuild.yaml",
+                    "**/flagger/**/*.yaml",
+                    "**/argocd/**/*.yaml"
+                ],
+                "contentPatterns": [
+                    "kind: Canary",
+                    "kind: Application",
+                    "jobs:",
+                    "stages:",
+                    "pipeline"
+                ]
+            }
+        },
+        "cloud-engineering": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Cloud engineering covering AWS, Azure, GCP patterns, cloud-native services, and multi-cloud strategies",
+            "promptTriggers": {
+                "keywords": [
+                    "AWS",
+                    "Azure",
+                    "GCP",
+                    "Google Cloud",
+                    "cloud",
+                    "EC2",
+                    "S3",
+                    "Lambda",
+                    "EKS",
+                    "ECS",
+                    "RDS",
+                    "DynamoDB",
+                    "CloudFormation",
+                    "ARM template",
+                    "Cloud Functions",
+                    "Cloud Run",
+                    "serverless",
+                    "multi-cloud",
+                    "cloud migration",
+                    "well-architected"
+                ],
+                "intentPatterns": [
+                    "(AWS|Azure|GCP).*?(setup|configure|deploy|create)",
+                    "(migrate|migration).*?(cloud|AWS|Azure|GCP)",
+                    "(serverless|lambda).*?(function|deployment)",
+                    "(cloud|multi-cloud).*?(architecture|strategy|pattern)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*cloudformation*.yaml",
+                    "**/*cloudformation*.yml",
+                    "**/*.bicep",
+                    "**/deployment-manager/**/*.yaml"
+                ],
+                "contentPatterns": [
+                    "AWSTemplateFormatVersion",
+                    "resource \"aws_",
+                    "resource \"azurerm_",
+                    "resource \"google_"
+                ]
+            }
+        },
+        "systems-engineering": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Systems engineering covering Linux administration, networking, performance tuning, and configuration management",
+            "promptTriggers": {
+                "keywords": [
+                    "Linux",
+                    "system administration",
+                    "systemd",
+                    "networking",
+                    "TCP/IP",
+                    "DNS",
+                    "firewall",
+                    "iptables",
+                    "performance tuning",
+                    "Ansible",
+                    "Chef",
+                    "Puppet",
+                    "shell script",
+                    "bash",
+                    "configuration management",
+                    "troubleshooting",
+                    "security hardening"
+                ],
+                "intentPatterns": [
+                    "(Linux|system).*?(admin|administration|configure|setup)",
+                    "(network|networking).*?(configure|troubleshoot|debug)",
+                    "(performance|optimize|tuning).*?(system|server|Linux)",
+                    "(Ansible|Chef|Puppet).*?(playbook|recipe|manifest)",
+                    "(shell|bash).*?(script|automation)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/ansible/**/*.yml",
+                    "**/ansible/**/*.yaml",
+                    "**/playbooks/**/*.yml",
+                    "**/*.sh",
+                    "**/chef/**/*.rb",
+                    "**/puppet/**/*.pp"
+                ],
+                "contentPatterns": [
+                    "- hosts:",
+                    "- name:.*tasks:",
+                    "#!/bin/bash",
+                    "#!/bin/sh"
+                ]
+            }
         }
     },
     "notes": {
