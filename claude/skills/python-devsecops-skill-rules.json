@@ -1,0 +1,273 @@
+{
+    "version": "1.0",
+    "description": "Skill activation triggers for Python DevSecOps work. Controls when skills automatically suggest or block actions.",
+    "skills": {
+        "skill-developer": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Meta-skill for creating and managing Claude Code skills",
+            "promptTriggers": {
+                "keywords": [
+                    "skill system",
+                    "create skill",
+                    "add skill",
+                    "skill triggers",
+                    "skill rules",
+                    "hook system",
+                    "skill development",
+                    "skill-rules.json"
+                ],
+                "intentPatterns": [
+                    "(how do|how does|explain).*?skill",
+                    "(create|add|modify|build).*?skill",
+                    "skill.*?(work|trigger|activate|system)"
+                ]
+            }
+        },
+        "python-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Python development best practices for DevSecOps",
+            "promptTriggers": {
+                "keywords": [
+                    "python",
+                    "pytest",
+                    "type hint",
+                    "typing",
+                    "mypy",
+                    "ruff",
+                    "pydantic",
+                    "dataclass",
+                    "error handling",
+                    "exception",
+                    "logging",
+                    "poetry",
+                    "pip",
+                    "virtual environment",
+                    "venv",
+                    "import",
+                    "module",
+                    "package"
+                ],
+                "intentPatterns": [
+                    "(write|create|implement|build).*?(python|function|class|module)",
+                    "(test|pytest).*?(python|function|class)",
+                    "(fix|debug|handle).*?(error|exception|python)",
+                    "(type|typing|type hint).*?(python|function)",
+                    "(how to|best practice).*?python"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.py",
+                    "**/pyproject.toml",
+                    "**/setup.py",
+                    "**/requirements*.txt",
+                    "**/Pipfile",
+                    "**/.python-version"
+                ],
+                "pathExclusions": [
+                    "**/__pycache__/**",
+                    "**/.venv/**",
+                    "**/venv/**",
+                    "**/.tox/**",
+                    "**/build/**",
+                    "**/dist/**",
+                    "**/*.egg-info/**"
+                ],
+                "contentPatterns": [
+                    "^import ",
+                    "^from .* import",
+                    "def .*\\(.*\\).*:",
+                    "class .*:",
+                    "@pytest\\.",
+                    "@dataclass",
+                    "async def",
+                    "typing\\."
+                ]
+            }
+        },
+        "shell-script-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Shell scripting best practices for DevSecOps automation",
+            "promptTriggers": {
+                "keywords": [
+                    "bash",
+                    "shell",
+                    "shell script",
+                    "automation script",
+                    "deployment script",
+                    "set -euo pipefail",
+                    "shellcheck",
+                    "error handling",
+                    "argument parsing",
+                    "logging"
+                ],
+                "intentPatterns": [
+                    "(write|create|implement).*?(bash|shell|script)",
+                    "(automate|deploy).*?script",
+                    "(fix|debug).*?(bash|shell|script)",
+                    "(how to|best practice).*?(bash|shell)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.sh",
+                    "**/bin/**",
+                    "**/scripts/**/*.sh",
+                    "**/.git/hooks/*"
+                ],
+                "pathExclusions": [
+                    "**/node_modules/**",
+                    "**/.git/**"
+                ],
+                "contentPatterns": [
+                    "^#!/bin/bash",
+                    "^#!/usr/bin/env bash",
+                    "^#!/bin/sh",
+                    "set -",
+                    "function ",
+                    "if \\[\\[",
+                    "for .* in"
+                ]
+            }
+        },
+        "security-practices": {
+            "type": "guardrail",
+            "enforcement": "suggest",
+            "priority": "critical",
+            "description": "Security best practices for DevSecOps - secrets, input validation, dependencies",
+            "promptTriggers": {
+                "keywords": [
+                    "secret",
+                    "password",
+                    "api key",
+                    "token",
+                    "credential",
+                    "authentication",
+                    "authorization",
+                    "security",
+                    "vulnerability",
+                    "encryption",
+                    "input validation",
+                    "sanitize",
+                    "sql injection",
+                    "command injection",
+                    "path traversal",
+                    "aws secret",
+                    "environment variable",
+                    "secure",
+                    "bandit",
+                    "pip-audit"
+                ],
+                "intentPatterns": [
+                    "(add|implement|create).*?(secret|password|api.*key|token|auth)",
+                    "(secure|protect|encrypt|validate).*?(data|input|file|credential)",
+                    "(fix|prevent).*?(security|vulnerability|injection)",
+                    "(scan|check).*?(security|vulnerability|dependency)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/*.py",
+                    "**/*.sh",
+                    "**/*.env*",
+                    "**/secrets/**",
+                    "**/config/**",
+                    "**/*.yaml",
+                    "**/*.yml",
+                    "**/requirements*.txt"
+                ],
+                "contentPatterns": [
+                    "password|api[_-]?key|secret|token|credential",
+                    "subprocess\\..*shell=True",
+                    "os\\.system\\(",
+                    "eval\\(",
+                    "exec\\(",
+                    "f\".*{.*}.*\".*sql",
+                    "boto3\\.client",
+                    "requests\\.get\\(",
+                    "open\\(.*['\"]w"
+                ]
+            }
+        },
+        "devops-automation": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "medium",
+            "description": "DevOps automation patterns - CI/CD, infrastructure, containers",
+            "promptTriggers": {
+                "keywords": [
+                    "docker",
+                    "dockerfile",
+                    "kubernetes",
+                    "k8s",
+                    "terraform",
+                    "ansible",
+                    "ci/cd",
+                    "github actions",
+                    "gitlab ci",
+                    "jenkins",
+                    "deployment",
+                    "pipeline",
+                    "infrastructure as code",
+                    "aws",
+                    "gcp",
+                    "azure",
+                    "cloudformation"
+                ],
+                "intentPatterns": [
+                    "(create|write|build).*?(dockerfile|pipeline|workflow|playbook)",
+                    "(deploy|automate).*?(infrastructure|application|service)",
+                    "(setup|configure).*?(ci|cd|pipeline|kubernetes)",
+                    "(how to|best practice).*?(devops|deployment|docker|kubernetes)"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/Dockerfile*",
+                    "**/.github/workflows/**",
+                    "**/.gitlab-ci.yml",
+                    "**/Jenkinsfile",
+                    "**/*.tf",
+                    "**/ansible/**/*.yml",
+                    "**/k8s/**/*.yaml",
+                    "**/kubernetes/**/*.yaml",
+                    "**/helm/**",
+                    "**/*-compose.yml"
+                ]
+            }
+        }
+    },
+    "notes": {
+        "enforcement_types": {
+            "suggest": "Skill suggestion appears but doesn't block execution",
+            "block": "Requires skill to be used before proceeding (guardrail)",
+            "warn": "Shows warning but allows proceeding"
+        },
+        "priority_levels": {
+            "critical": "Highest - Always trigger when matched (security issues)",
+            "high": "Important - Trigger for most matches",
+            "medium": "Moderate - Trigger for clear matches",
+            "low": "Optional - Trigger only for explicit matches"
+        },
+        "customization": {
+            "pathPatterns": "Adjust to match your project structure (src/, scripts/, etc.)",
+            "keywords": "Add domain-specific terms relevant to your DevSecOps work",
+            "intentPatterns": "Use regex for flexible user intent matching",
+            "python_projects": "For Python projects, pathPatterns should include **/*.py",
+            "shell_scripts": "For automation scripts, include scripts/ or bin/ directories",
+            "iac_projects": "For IaC, include terraform/ or ansible/ directories"
+        },
+        "usage_notes": {
+            "python": "python-dev-guidelines activates for .py files and Python keywords",
+            "shell": "shell-script-guidelines activates for .sh files and bash keywords",
+            "security": "security-practices is a guardrail that suggests on security-related keywords",
+            "devops": "devops-automation activates for Dockerfiles, CI/CD configs, IaC files"
+        }
+    }
+}
