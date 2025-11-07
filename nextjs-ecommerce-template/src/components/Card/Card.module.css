@@ -1,0 +1,113 @@
+/**
+ * Card Component Styles
+ *
+ * RULES:
+ * - All values MUST use design tokens from tokens.css
+ * - NO hardcoded colors, spacing, or other values
+ * - Maintain consistent UX across all card instances
+ */
+
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.card:hover.interactive {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   PADDING VARIANTS
+   ======================================== */
+
+.padding {
+  padding: var(--card-padding);
+}
+
+.paddingSm {
+  padding: var(--spacing-4);
+}
+
+.paddingLg {
+  padding: var(--spacing-8);
+}
+
+.paddingNone {
+  padding: 0;
+}
+
+/* ========================================
+   CARD SECTIONS
+   ======================================== */
+
+.header {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: var(--border-width-thin) solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+.body {
+  padding: var(--spacing-6);
+}
+
+.footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: var(--border-width-thin) solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+.outlined {
+  box-shadow: none;
+  border: var(--border-width-thin) solid var(--color-border);
+}
+
+.elevated {
+  box-shadow: var(--shadow-xl);
+}
+
+.flat {
+  box-shadow: none;
+}
+
+/* ========================================
+   MODIFIERS
+   ======================================== */
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .card {
+    border-radius: var(--border-radius-md);
+  }
+
+  .padding {
+    padding: var(--spacing-4);
+  }
+
+  .header,
+  .footer {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .body {
+    padding: var(--spacing-4);
+  }
+}

@@ -1,0 +1,197 @@
+/**
+ * Button Component Styles
+ *
+ * RULES:
+ * - All values MUST use design tokens from tokens.css
+ * - NO hardcoded colors, spacing, or other values
+ * - Maintain consistent UX across all button instances
+ */
+
+.button {
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-family: var(--font-family-sans);
+  font-size: var(--button-font-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  border-radius: var(--button-border-radius);
+  border: var(--border-width-thin) solid transparent;
+  cursor: pointer;
+  transition: var(--button-transition);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   VARIANTS
+   ======================================== */
+
+/* Primary Variant */
+.primary {
+  background-color: var(--color-primary-600);
+  color: white;
+  border-color: var(--color-primary-600);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-primary-800);
+  border-color: var(--color-primary-800);
+}
+
+/* Secondary Variant */
+.secondary {
+  background-color: var(--color-secondary-600);
+  color: white;
+  border-color: var(--color-secondary-600);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-secondary-700);
+  border-color: var(--color-secondary-700);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--color-secondary-800);
+  border-color: var(--color-secondary-800);
+}
+
+/* Outline Variant */
+.outline {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--color-primary-50);
+}
+
+.outline:active:not(:disabled) {
+  background-color: var(--color-primary-100);
+}
+
+/* Ghost Variant */
+.ghost {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border-color: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-primary-50);
+}
+
+.ghost:active:not(:disabled) {
+  background-color: var(--color-primary-100);
+}
+
+/* Danger Variant */
+.danger {
+  background-color: var(--color-error-600);
+  color: white;
+  border-color: var(--color-error-600);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-error-700);
+  border-color: var(--color-error-700);
+}
+
+.danger:active:not(:disabled) {
+  background-color: var(--color-error-800);
+  border-color: var(--color-error-800);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-base);
+}
+
+.lg {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   STATES
+   ======================================== */
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  top: 50%;
+  left: 50%;
+  margin-left: -0.5em;
+  margin-top: -0.5em;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ========================================
+   MODIFIERS
+   ======================================== */
+
+.fullWidth {
+  width: 100%;
+}
+
+.iconOnly {
+  padding: var(--spacing-2);
+}
+
+.iconOnly.sm {
+  padding: var(--spacing-1);
+}
+
+.iconOnly.lg {
+  padding: var(--spacing-3);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

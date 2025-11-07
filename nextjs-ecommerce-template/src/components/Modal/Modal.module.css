@@ -1,0 +1,173 @@
+/**
+ * Modal Component Styles
+ *
+ * RULES:
+ * - All values MUST use design tokens from tokens.css
+ * - NO hardcoded colors, spacing, or other values
+ * - Maintain consistent UX across all modal instances
+ */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--modal-backdrop-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-modal-backdrop);
+  padding: var(--spacing-4);
+  animation: fadeIn var(--transition-fast);
+}
+
+.modal {
+  position: relative;
+  background-color: var(--color-background);
+  border-radius: var(--modal-border-radius);
+  max-width: var(--modal-max-width);
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-2xl);
+  z-index: var(--z-index-modal);
+  animation: slideUp var(--transition-base);
+}
+
+/* ========================================
+   MODAL SECTIONS
+   ======================================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--modal-padding);
+  border-bottom: var(--border-width-thin) solid var(--color-divider);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-fast);
+}
+
+.closeButton:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-primary);
+}
+
+.body {
+  padding: var(--modal-padding);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding: var(--modal-padding);
+  border-top: var(--border-width-thin) solid var(--color-divider);
+}
+
+/* ========================================
+   SIZE VARIANTS
+   ======================================== */
+
+.sm {
+  max-width: 24rem;
+}
+
+.md {
+  max-width: 32rem;
+}
+
+.lg {
+  max-width: 48rem;
+}
+
+.xl {
+  max-width: 64rem;
+}
+
+.fullscreen {
+  max-width: 100%;
+  max-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: 95vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    animation: slideUpMobile var(--transition-base);
+  }
+
+  .header,
+  .body,
+  .footer {
+    padding: var(--spacing-4);
+  }
+}
+
+@keyframes slideUpMobile {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
