@@ -2,6 +2,12 @@
 
 This directory contains Claude Code skills that automatically enforce development patterns and best practices.
 
+## 📚 Documentation
+
+- **[SKILLS_ROADMAP.md](./SKILLS_ROADMAP.md)** - Complete list of 17 potential skills with priorities and implementation timeline
+- **[HOW_TO_ADD_SKILLS.md](./HOW_TO_ADD_SKILLS.md)** - Step-by-step guide for adding new skills when needed
+- **This README** - How the skill system works
+
 ## Installed Skills
 
 ### nextjs-ecommerce-guidelines
