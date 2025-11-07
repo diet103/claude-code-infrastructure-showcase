@@ -1,0 +1,88 @@
+/**
+ * Form Component Styles
+ *
+ * RULES:
+ * - All values MUST use design tokens from tokens.css
+ * - NO hardcoded colors, spacing, or other values
+ * - Maintain consistent UX across all form instances
+ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.formRow {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-4);
+  border-top: var(--border-width-thin) solid var(--color-divider);
+  margin-top: var(--spacing-2);
+}
+
+.formActions.alignLeft {
+  justify-content: flex-start;
+}
+
+.formActions.alignCenter {
+  justify-content: center;
+}
+
+.formActions.spaceBetween {
+  justify-content: space-between;
+}
+
+.formError {
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-error-50);
+  border: var(--border-width-thin) solid var(--color-error-200);
+  border-radius: var(--border-radius-md);
+  color: var(--color-error-800);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-4);
+}
+
+.formSuccess {
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-success-50);
+  border: var(--border-width-thin) solid var(--color-success-200);
+  border-radius: var(--border-radius-md);
+  color: var(--color-success-800);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .formActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .formActions button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,174 @@
+/**
+ * Input Component Styles
+ *
+ * RULES:
+ * - All values MUST use design tokens from tokens.css
+ * - NO hardcoded colors, spacing, or other values
+ * - Maintain consistent UX across all input instances
+ */
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.required {
+  color: var(--color-error-600);
+  margin-left: var(--spacing-1);
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-family: var(--font-family-sans);
+  font-size: var(--input-font-size);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.input:hover:not(:disabled):not(.error) {
+  border-color: var(--color-gray-400);
+}
+
+.input:focus:not(:disabled) {
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.input:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+
+.sm {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-size: var(--input-font-size);
+}
+
+.lg {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   STATES
+   ======================================== */
+
+.error {
+  border-color: var(--color-error-600);
+}
+
+.error:focus {
+  border-color: var(--color-error-600);
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+.success {
+  border-color: var(--color-success-600);
+}
+
+.success:focus {
+  border-color: var(--color-success-600);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* ========================================
+   WITH ICONS
+   ======================================== */
+
+.withIconBefore {
+  padding-left: var(--spacing-10);
+}
+
+.withIconAfter {
+  padding-right: var(--spacing-10);
+}
+
+.iconBefore {
+  position: absolute;
+  left: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.iconAfter {
+  position: absolute;
+  right: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+/* ========================================
+   HELPER TEXT
+   ======================================== */
+
+.helperText {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-1);
+}
+
+.errorText {
+  font-size: var(--font-size-xs);
+  color: var(--color-error-600);
+  margin-top: var(--spacing-1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+/* ========================================
+   TEXTAREA
+   ======================================== */
+
+.textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: var(--font-family-sans);
+}
+
+/* ========================================
+   FULL WIDTH
+   ======================================== */
+
+.fullWidth {
+  width: 100%;
+}
