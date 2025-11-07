@@ -83,3 +83,13 @@ export interface Cart {
   total: number;
   itemCount: number;
 }
+
+/**
+ * Filter types - Re-export from filters module
+ */
+export type {
+  FilterOption,
+  FilterGroup,
+  PriceRange,
+  ActiveFilters,
+} from './filters';
