@@ -1,0 +1,208 @@
+{
+    "version": "2.0",
+    "description": "Skill activation triggers for Claude Code. Controls when skills automatically suggest or block actions.",
+    "settings": {
+        "skill_activation_mode": "disabled",
+        "conservativeness": "balanced"
+    },
+    "skills": {
+        "skill-developer": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Meta-skill for creating and managing Claude Code skills",
+            "promptTriggers": {
+                "keywords": [
+                    "skill system",
+                    "create skill",
+                    "add skill",
+                    "skill triggers",
+                    "skill rules",
+                    "hook system",
+                    "skill development",
+                    "skill-rules.json"
+                ],
+                "intentPatterns": [
+                    "\\b(how do|how does|explain)\\b.*?\\bskills?\\b",
+                    "\\b(create|add|modify|build)(s|d|ed|ing)?\\b.*?\\bskills?\\b",
+                    "\\bskills?\\b.*?\\b(work|trigger|activate|system)(s|ing|ed)?\\b"
+                ]
+            }
+        },
+        "backend-dev-guidelines": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Backend development patterns for Node.js/Express/TypeScript",
+            "promptTriggers": {
+                "keywords": [
+                    "backend",
+                    "backend development",
+                    "microservice",
+                    "controller",
+                    "repository",
+                    "routing",
+                    "express",
+                    "API endpoint",
+                    "endpoint",
+                    "middleware",
+                    "validation",
+                    "Zod",
+                    "Prisma",
+                    "database access",
+                    "BaseController",
+                    "dependency injection",
+                    "unifiedConfig"
+                ],
+                "intentPatterns": [
+                    "\\b(create|add|implement|build)(s|d|ed|ing)?\\b.*?\\b(route|endpoint|API|controller|service|repository)s?\\b",
+                    "\\b(fix|handle|debug)(s|es|d|ed|ing)?\\b.*?\\b(error|exception|backend)s?\\b",
+                    "\\b(add|implement)(s|ed|ing)?\\b.*?\\b(middleware|validation|error.?handling)\\b",
+                    "\\b(organize|structure|refactor)(s|d|ed|ing)?\\b.*?\\b(backend|service|API)s?\\b",
+                    "\\b(how to|best practice)s?\\b.*?\\b(backend|route|controller|service)s?\\b"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "backend/**/*.ts",
+                    "api/**/*.ts",
+                    "server/**/*.ts",
+                    "services/**/*.ts",
+                    "blog-api/src/**/*.ts",
+                    "auth-service/src/**/*.ts",
+                    "notifications-service/src/**/*.ts"
+                ],
+                "pathExclusions": [
+                    "**/*.test.ts",
+                    "**/*.spec.ts"
+                ],
+                "contentPatterns": [
+                    "router\\.",
+                    "app\\.(get|post|put|delete|patch)",
+                    "export.*Controller",
+                    "export.*Service",
+                    "prisma\\."
+                ]
+            }
+        },
+        "frontend-dev-guidelines": {
+            "type": "guardrail",
+            "enforcement": "block",
+            "priority": "high",
+            "description": "React/TypeScript best practices including MUI v7 compatibility",
+            "promptTriggers": {
+                "keywords": [
+                    "component",
+                    "react component",
+                    "UI",
+                    "modal",
+                    "dialog",
+                    "form component",
+                    "MUI",
+                    "Material-UI",
+                    "Grid",
+                    "styling",
+                    "frontend",
+                    "React",
+                    "useSuspenseQuery",
+                    "useQuery",
+                    "TanStack"
+                ],
+                "intentPatterns": [
+                    "\\b(create|add|make|build|update|modify|edit)(s|d|ed|ing)?\\b.*?\\b(component|UI|page|modal|dialog|form|widget|dashboard)s?\\b",
+                    "\\b(how to|best practice)s?\\b.*?\\b(component|react|MUI)s?\\b",
+                    "\\b(style|design|layout)(s|d|ed|ing)?\\b.*?\\b(component|UI)s?\\b"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "frontend/src/**/*.tsx",
+                    "frontend/src/**/*.ts",
+                    "client/src/**/*.tsx",
+                    "client/src/**/*.ts",
+                    "src/**/*.tsx"
+                ],
+                "pathExclusions": [
+                    "**/*.test.tsx",
+                    "**/*.test.ts",
+                    "**/*.spec.tsx",
+                    "**/*.spec.ts",
+                    "**/*.styles.ts",
+                    "**/vite.config.ts",
+                    "**/tsconfig.json"
+                ],
+                "contentPatterns": [
+                    "from '@mui/material';",
+                    "import.*Grid.*from.*@mui",
+                    "<Grid ",
+                    "Grid2",
+                    "Unstable_Grid",
+                    "makeStyles",
+                    "@material-ui/core"
+                ]
+            },
+            "blockMessage": "⚠️ BLOCKED - Frontend Best Practices Required\n\n📋 REQUIRED ACTION:\n1. Use Skill tool: 'frontend-dev-guidelines'\n2. Review MUI v7 patterns (Grid uses size={{}} prop, NOT xs/sm props)\n3. Check React/TypeScript best practices\n4. Use proper styling patterns\n5. Then retry this edit\n\nReason: Enforce MUI v7 compatibility and React best practices\nFile: {file_path}\n\n💡 TIP: Add '// @skip-validation' comment to skip future checks",
+            "skipConditions": {
+                "sessionSkillUsed": true,
+                "fileMarkers": [
+                    "@skip-validation"
+                ],
+                "envOverride": "SKIP_FRONTEND_GUIDELINES"
+            }
+        },
+        "error-tracking": {
+            "type": "domain",
+            "enforcement": "suggest",
+            "priority": "high",
+            "description": "Sentry error tracking and performance monitoring patterns",
+            "promptTriggers": {
+                "keywords": [
+                    "error handling",
+                    "exception",
+                    "sentry",
+                    "error tracking",
+                    "captureException",
+                    "monitoring",
+                    "performance tracking"
+                ],
+                "intentPatterns": [
+                    "\\b(add|create|implement|setup|set up)(s|d|ed|ing|ting)?\\b.*?\\b(error handling|sentry|error tracking)\\b",
+                    "\\b(fix|handle|catch)(es|ed|ing)?\\b.*?\\b(error|exception)s?\\b",
+                    "\\b(how to|best practice)s?\\b.*?\\b(error|sentry|monitoring)s?\\b"
+                ]
+            },
+            "fileTriggers": {
+                "pathPatterns": [
+                    "**/instrument.ts",
+                    "**/sentry*.ts",
+                    "**/*Controller.ts",
+                    "**/*Service.ts"
+                ],
+                "contentPatterns": [
+                    "@sentry",
+                    "Sentry\\.",
+                    "captureException",
+                    "captureMessage"
+                ]
+            }
+        }
+    },
+    "notes": {
+        "enforcement_types": {
+            "suggest": "Skill suggestion appears but doesn't block execution",
+            "block": "Requires skill to be used before proceeding (guardrail)",
+            "warn": "Shows warning but allows proceeding"
+        },
+        "priority_levels": {
+            "critical": "Highest - Always trigger when matched",
+            "high": "Important - Trigger for most matches",
+            "medium": "Moderate - Trigger for clear matches",
+            "low": "Optional - Trigger only for explicit matches"
+        },
+        "customization": {
+            "pathPatterns": "Adjust to match your project structure (blog-api, auth-service, etc.)",
+            "keywords": "Add domain-specific terms relevant to your project",
+            "intentPatterns": "Use regex for flexible user intent matching"
+        }
+    }
+}

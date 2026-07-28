@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+config.ini
+sentry.ini
+
+# Logs
+logs/
+*.log
+pm2-logs/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Claude Code local/session files
+.claude/settings.local.json
+.claude/hooks/state/
+.claude/hooks/skill-guard.log
+.claude/hooks/node_modules/
+.claude/hooks/data/
+.claude/tsc-cache/
+.claude/memory/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database
+*.sqlite
+*.db
+
+# Prisma
+.env
+prisma/.env
+
+# Excluded from showcase distribution
+docs/
+dev/active/blog-platform-demo/
+dev/active/**/*.md
+
+# Local backup clone
+ccip/
+# Held-out benchmark corpus contains real prompts from private projects - never commit
+docs/benchmarks/skill-activation/heldout/

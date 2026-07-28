@@ -1,0 +1,50 @@
+{
+    "hooks": {
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".codex/hooks/_codex-adapter.sh skill-activation-prompt.sh",
+                        "timeout": 15
+                    }
+                ]
+            }
+        ],
+        "PreToolUse": [
+            {
+                "matcher": "Edit|MultiEdit|Write|apply_patch",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".codex/hooks/_codex-adapter.sh skill-verification-guard.sh",
+                        "timeout": 15
+                    }
+                ]
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "Edit|MultiEdit|Write|apply_patch",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".codex/hooks/_codex-adapter.sh post-tool-use-tracker.sh",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ],
+        "Stop": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": ".codex/hooks/_codex-adapter.sh session-doc-updater.sh",
+                        "timeout": 30
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,16 @@
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+syntax on
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set ruler
+set cursorline
+set showmatch
+set wildmenu
+set showcmd
+autocmd FileType typescript,javascript,json setlocal tabstop=4 shiftwidth=4

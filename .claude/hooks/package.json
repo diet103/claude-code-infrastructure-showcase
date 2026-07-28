@@ -1,0 +1,25 @@
+{
+    "name": "claude-hooks",
+    "version": "2.0.0",
+    "description": "TypeScript hooks for Claude Code skill auto-activation with AI classification",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "check": "tsc --noEmit",
+        "test": "tsx skill-activation-prompt.ts < test-input.json"
+    },
+    "dependencies": {
+        "@types/better-sqlite3": "^7.6.13",
+        "@types/minimatch": "^5.1.2",
+        "@types/node": "^20.11.0",
+        "better-sqlite3": "^12.6.2",
+        "minimatch": "^10.1.1",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.3"
+    },
+    "optionalDependencies": {
+        "@google/genai": "^1.34.0",
+        "openai": "^4.0.0",
+        "@anthropic-ai/sdk": "^0.30.0"
+    }
+}
