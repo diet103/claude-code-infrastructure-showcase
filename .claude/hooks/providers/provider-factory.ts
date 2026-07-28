@@ -5,12 +5,13 @@
  * Can be overridden with SKILL_AI_PROVIDER environment variable.
  *
  * Detection priority:
- * 1. SKILL_AI_PROVIDER env var (explicit: gemini|openai|anthropic|ollama)
+ * 1. SKILL_AI_PROVIDER env var (explicit: gemini|openai|anthropic|minimax|ollama)
  * 2. GEMINI_API_KEY present -> Gemini
  * 3. OPENAI_API_KEY present -> OpenAI
  * 4. ANTHROPIC_API_KEY present -> Anthropic
- * 5. OLLAMA_BASE_URL present -> Ollama (ping, 500ms timeout)
- * 6. null -> regex-only fallback
+ * 5. MINIMAX_API_KEY present -> MiniMax
+ * 6. OLLAMA_BASE_URL present -> Ollama (ping, 500ms timeout)
+ * 7. null -> regex-only fallback
  *
  * Ollama requires explicit opt-in (SKILL_AI_PROVIDER=ollama or OLLAMA_BASE_URL):
  * probing for it unconditionally would cost every hook call a 500ms network
@@ -21,16 +22,18 @@ import type { AIProvider } from './ai-provider.js';
 import { createGeminiProvider } from './gemini-provider.js';
 import { createOpenAIProvider } from './openai-provider.js';
 import { createAnthropicProvider } from './anthropic-provider.js';
+import { createMiniMaxProvider } from './minimax-provider.js';
 import { createOllamaProvider } from './ollama-provider.js';
 
 const debug = process.env.DEBUG_SKILLS === '1';
 
-type ProviderName = 'gemini' | 'openai' | 'anthropic' | 'ollama';
+type ProviderName = 'gemini' | 'openai' | 'anthropic' | 'minimax' | 'ollama';
 
 const PROVIDER_CREATORS: Record<ProviderName, () => Promise<AIProvider | null>> = {
     gemini: createGeminiProvider,
     openai: createOpenAIProvider,
     anthropic: createAnthropicProvider,
+    minimax: createMiniMaxProvider,
     ollama: createOllamaProvider,
 };
 
@@ -60,6 +63,7 @@ export async function createProvider(options?: { warnIfUnavailable?: boolean }):
         { check: () => !!process.env.GEMINI_API_KEY, name: 'gemini' },
         { check: () => !!process.env.OPENAI_API_KEY, name: 'openai' },
         { check: () => !!process.env.ANTHROPIC_API_KEY, name: 'anthropic' },
+        { check: () => !!process.env.MINIMAX_API_KEY, name: 'minimax' },
         { check: () => !!process.env.OLLAMA_BASE_URL, name: 'ollama' }, // Opt-in only: the ping costs 500ms when Ollama is absent
     ];
 
