@@ -3,7 +3,7 @@
  * UserPromptSubmit Hook - Skill Activation + Session Intelligence
  *
  * Analyzes user prompts to suggest relevant skills using either:
- * - AI classification (multi-provider: Gemini, OpenAI, Anthropic, Ollama)
+ * - AI classification (multi-provider: Gemini, OpenAI, Anthropic, MiniMax, Ollama)
  * - Regex/keyword fallback (always available, zero cost)
  *
  * Session Intelligence (requires GEMINI_API_KEY):

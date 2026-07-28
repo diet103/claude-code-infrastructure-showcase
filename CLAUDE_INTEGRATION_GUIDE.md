@@ -55,7 +55,7 @@ The wizard:
 
 ```bash
 npx tsx setup.ts /absolute/path/to/their-project --yes
-# Optional flags: --mode disabled|fallback|ai-only   --provider auto|gemini|openai|anthropic|ollama
+# Optional flags: --mode disabled|fallback|ai-only   --provider auto|gemini|openai|anthropic|minimax|ollama
 #                 --conservativeness strict|balanced|aggressive   --editor
 ```
 

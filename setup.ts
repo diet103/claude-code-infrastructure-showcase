@@ -46,7 +46,7 @@ function closeRl(): void {
 // ============================================================
 
 const VALID_MODES = ['disabled', 'fallback', 'ai-only'];
-const VALID_PROVIDERS = ['auto', 'gemini', 'openai', 'anthropic', 'ollama'];
+const VALID_PROVIDERS = ['auto', 'gemini', 'openai', 'anthropic', 'minimax', 'ollama'];
 const VALID_CONSERVATIVENESS = ['strict', 'balanced', 'aggressive'];
 
 interface CliOptions {
@@ -72,7 +72,7 @@ Non-interactive (for scripts, CI, or when Claude Code runs the wizard):
 Options:
   -y, --yes                  Accept defaults, never prompt (required when stdin is not a terminal)
       --mode <m>             disabled | fallback | ai-only                 (default: disabled)
-      --provider <p>         auto | gemini | openai | anthropic | ollama   (default: auto)
+      --provider <p>         auto | gemini | openai | anthropic | minimax | ollama   (default: auto)
       --conservativeness <c> strict | balanced | aggressive                (default: balanced)
       --editor               Also install the NeoVim editor config         (default: skip)
   -h, --help                 Show this help
@@ -276,6 +276,15 @@ async function validateProvider(provider: string): Promise<boolean> {
             console.log('  ANTHROPIC_API_KEY found.');
             return true;
         }
+        case 'minimax': {
+            if (!process.env.MINIMAX_API_KEY) {
+                console.log('\n  MINIMAX_API_KEY not found in environment.');
+                console.log('  Get a key: https://platform.minimax.io/docs');
+                return false;
+            }
+            console.log('  MINIMAX_API_KEY found.');
+            return true;
+        }
         case 'ollama': {
             console.log('  Checking Ollama availability...');
             try {
@@ -475,12 +484,13 @@ async function main() {
                     'Gemini - Free tier, fast (recommended)',
                     'OpenAI - GPT-4o-mini, pay-per-use',
                     'Anthropic - Claude Haiku, pay-per-use',
+                    'MiniMax - MiniMax-M3, pay-per-use',
                     'Ollama - Local, free, no API key needed',
                 ],
                 0
             );
 
-            const providers = ['auto', 'gemini', 'openai', 'anthropic', 'ollama'];
+            const providers = ['auto', 'gemini', 'openai', 'anthropic', 'minimax', 'ollama'];
             selectedProvider = providers[providerIdx];
         }
 
