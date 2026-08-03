@@ -1,0 +1,65 @@
+{
+  "nextjs-ecommerce-guidelines": {
+    "type": "guardrail",
+    "enforcement": "block",
+    "priority": "high",
+    "description": "Enforces Next.js eCommerce development patterns: DRY, SRP, no inline styles, design tokens only",
+    "promptTriggers": {
+      "keywords": [
+        "component",
+        "create component",
+        "new component",
+        "style",
+        "styling",
+        "css",
+        "design",
+        "button",
+        "card",
+        "form",
+        "input",
+        "modal",
+        "table",
+        "woocommerce",
+        "product",
+        "cart",
+        "checkout"
+      ],
+      "intentPatterns": [
+        "(create|add|build|make).*?(component|feature|page)",
+        "(style|design|layout).*?(component|page)",
+        "how.*?(style|component|pattern)",
+        "(add|create).*?(button|card|form|modal|table|input)",
+        "woocommerce.*?(integration|api|product)",
+        "(setup|configure|create).*?ecommerce"
+      ]
+    },
+    "fileTriggers": {
+      "pathPatterns": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "src/**/*.css",
+        "src/components/**/*",
+        "src/features/**/*",
+        "src/app/**/*",
+        "*.module.css"
+      ],
+      "contentPatterns": [
+        "import.*from.*components",
+        "import.*from.*features",
+        "className=",
+        "styles\\.",
+        "React\\.FC",
+        "export const.*Component"
+      ]
+    },
+    "blockMessage": "⚠️ This action requires following Next.js eCommerce guidelines. The skill 'nextjs-ecommerce-guidelines' has been activated to ensure proper patterns are followed.",
+    "skipConditions": {
+      "paths": [
+        "node_modules/**",
+        ".next/**",
+        "build/**",
+        "dist/**"
+      ]
+    }
+  }
+}

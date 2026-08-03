@@ -1,0 +1,178 @@
+/**
+ * Table Component Styles
+ *
+ * RULES:
+ * - All values MUST use design tokens from tokens.css
+ * - NO hardcoded colors, spacing, or other values
+ * - Maintain consistent UX across all table instances
+ */
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width-thin) solid var(--table-border-color);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  background-color: var(--color-background);
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.thead {
+  background-color: var(--table-header-background);
+}
+
+.th {
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  border-bottom: var(--border-width-medium) solid var(--table-border-color);
+  white-space: nowrap;
+}
+
+.th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.th.sortable:hover {
+  background-color: var(--color-gray-100);
+}
+
+.sortIcon {
+  display: inline-flex;
+  margin-left: var(--spacing-1);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   BODY
+   ======================================== */
+
+.tbody {
+  background-color: var(--color-background);
+}
+
+.tr {
+  border-bottom: var(--border-width-thin) solid var(--table-border-color);
+  transition: var(--transition-fast);
+}
+
+.tr:last-child {
+  border-bottom: none;
+}
+
+.tr.hoverable:hover {
+  background-color: var(--table-row-hover-background);
+}
+
+.tr.clickable {
+  cursor: pointer;
+}
+
+.td {
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   ALIGNMENT
+   ======================================== */
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+/* ========================================
+   STRIPED VARIANT
+   ======================================== */
+
+.striped .tr:nth-child(even) {
+  background-color: var(--color-gray-50);
+}
+
+.striped .tr:nth-child(even):hover {
+  background-color: var(--table-row-hover-background);
+}
+
+/* ========================================
+   COMPACT VARIANT
+   ======================================== */
+
+.compact .th,
+.compact .td {
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+/* ========================================
+   LOADING & EMPTY STATES
+   ======================================== */
+
+.emptyState {
+  padding: var(--spacing-12) var(--spacing-4);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.loadingState {
+  padding: var(--spacing-12) var(--spacing-4);
+  text-align: center;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .table {
+    font-size: var(--font-size-xs);
+  }
+
+  .th,
+  .td {
+    padding: var(--spacing-2) var(--spacing-2);
+  }
+
+  .compact .th,
+  .compact .td {
+    padding: var(--spacing-1) var(--spacing-2);
+  }
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+.tableWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+  border-radius: var(--border-radius-sm);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--color-gray-400);
+  border-radius: var(--border-radius-sm);
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-500);
+}
