@@ -205,7 +205,7 @@ In AI mode, classifications never arm hard blocks unless you opt in with `"ai_ca
 Auto-detected from environment, or force with `SKILL_AI_PROVIDER`:
 
 ```bash
-export SKILL_AI_PROVIDER=gemini  # gemini|openai|anthropic|ollama
+export SKILL_AI_PROVIDER=gemini  # gemini|openai|anthropic|minimax|ollama
 ```
 
 ### Conservativeness
@@ -246,12 +246,17 @@ export DEBUG_SKILLS=1  # Show AI classification details in stderr
 
 ```bash
 # Force specific provider
-SKILL_AI_PROVIDER=gemini|openai|anthropic|ollama
+SKILL_AI_PROVIDER=gemini|openai|anthropic|minimax|ollama
 
 # Provider API keys (auto-detection uses these)
 GEMINI_API_KEY=your-key
 OPENAI_API_KEY=your-key
 ANTHROPIC_API_KEY=your-key
+MINIMAX_API_KEY=your-key
+
+# MiniMax customization
+MINIMAX_MODEL=MiniMax-M3  # MiniMax-M3 (default) or MiniMax-M2.7
+MINIMAX_BASE_URL=https://api.minimax.io/anthropic  # China: https://api.minimaxi.com/anthropic
 
 # OpenAI/Azure customization
 OPENAI_BASE_URL=https://your-endpoint.openai.azure.com
