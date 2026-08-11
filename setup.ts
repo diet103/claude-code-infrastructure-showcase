@@ -484,7 +484,7 @@ async function main() {
                     'Gemini - Free tier, fast (recommended)',
                     'OpenAI - GPT-4o-mini, pay-per-use',
                     'Anthropic - Claude Haiku, pay-per-use',
-                    'MiniMax - MiniMax-M3, pay-per-use',
+                    'MiniMax - MiniMax-M3 or MiniMax-M2.7, pay-per-use',
                     'Ollama - Local, free, no API key needed',
                 ],
                 0

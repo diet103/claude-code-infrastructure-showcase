@@ -254,6 +254,10 @@ OPENAI_API_KEY=your-key
 ANTHROPIC_API_KEY=your-key
 MINIMAX_API_KEY=your-key
 
+# MiniMax customization
+MINIMAX_MODEL=MiniMax-M3  # MiniMax-M3 (default) or MiniMax-M2.7
+MINIMAX_BASE_URL=https://api.minimax.io/anthropic  # China: https://api.minimaxi.com/anthropic
+
 # OpenAI/Azure customization
 OPENAI_BASE_URL=https://your-endpoint.openai.azure.com
 OPENAI_MODEL=gpt-4o-mini

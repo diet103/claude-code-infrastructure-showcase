@@ -222,7 +222,7 @@ Choose your activation mode:
 | Gemini | gemini-3-flash-preview | `GEMINI_API_KEY` | Yes (generous) |
 | OpenAI | gpt-4o-mini | `OPENAI_API_KEY` | No |
 | Anthropic | claude-haiku-4-5 | `ANTHROPIC_API_KEY` | No |
-| MiniMax | MiniMax-M3 | `MINIMAX_API_KEY` | No |
+| MiniMax | MiniMax-M3 (default), MiniMax-M2.7 | `MINIMAX_API_KEY` | No |
 | Ollama | llama3.2 (local) | None needed | Yes (local) |
 
 Auto-detection tries providers in order: Gemini > OpenAI > Anthropic > MiniMax > Ollama. Override with `SKILL_AI_PROVIDER=gemini`.
@@ -491,8 +491,8 @@ GEMINI_API_KEY=                  # Auto-detect Gemini
 OPENAI_API_KEY=                  # Auto-detect OpenAI
 ANTHROPIC_API_KEY=               # Auto-detect Anthropic
 MINIMAX_API_KEY=                 # Auto-detect MiniMax
-MINIMAX_MODEL=MiniMax-M3         # Default MiniMax model
-MINIMAX_BASE_URL=https://api.minimax.io/anthropic  # Optional: switch region (China: https://api.minimaxi.com/anthropic)
+MINIMAX_MODEL=MiniMax-M3         # MiniMax-M3 (default) or MiniMax-M2.7
+MINIMAX_BASE_URL=https://api.minimax.io/anthropic  # Global; China: https://api.minimaxi.com/anthropic
 OLLAMA_MODEL=llama3.2            # Default Ollama model
 OLLAMA_BASE_URL=http://localhost:11434
 

@@ -6,14 +6,20 @@
  * (global) and https://api.minimaxi.com/anthropic (China region).
  *
  * Set MINIMAX_API_KEY environment variable.
- * Set MINIMAX_MODEL to change model (default: MiniMax-M3)
+ * Set MINIMAX_MODEL to MiniMax-M3 (default) or MiniMax-M2.7.
  * Set MINIMAX_BASE_URL to switch region (default: https://api.minimax.io/anthropic)
  */
 
 import type { AIProvider } from './ai-provider.js';
 
-const DEFAULT_BASE_URL = 'https://api.minimax.io/anthropic';
-const DEFAULT_MODEL = 'MiniMax-M3';
+export const MINIMAX_MODELS = ['MiniMax-M3', 'MiniMax-M2.7'] as const;
+export const MINIMAX_ANTHROPIC_BASE_URLS = {
+    global: 'https://api.minimax.io/anthropic',
+    china: 'https://api.minimaxi.com/anthropic',
+} as const;
+
+const DEFAULT_BASE_URL = MINIMAX_ANTHROPIC_BASE_URLS.global;
+const DEFAULT_MODEL = MINIMAX_MODELS[0];
 
 export class MiniMaxProvider implements AIProvider {
     readonly name = 'minimax';
